@@ -1,27 +1,25 @@
 spring:
   application:
-    name: api-gateway
-
-  ##GATEWAY CONFIGURATIONS
-
+    name: API-GATEWAY
   cloud:
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"
       routes:
         ## service1
-        - id: lvservice
-          uri: lb://lvservice
+        - id: lv
+          uri: lb://lv
           predicates:
-            - Path=/lvservice/**
+            - Path=/lv/**
           filters:
             - StripPrefix=1
-
-        ## Service2
-        - id: lpsservice
-          uri: lb://lpsservice
-          predicates:
-            - Path=/lpsservice/**
-          filters:
-            - StripPrefix=1
+       
 server:
   port: 8080
 
@@ -29,6 +27,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+      
 
 
   

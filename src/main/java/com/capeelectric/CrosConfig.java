@@ -9,16 +9,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class CrosConfig {
 	
 	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				
-				registry.addMapping("/**").allowedOrigins("http://localhost:4200")
-				.allowedMethods("GET","POST","DELETE","OPTIONS")
-				.allowedHeaders("*").allowCredentials(true).maxAge(3600);
-			}
-		};
+	WebMvcConfigurer corsConfigurer() {
+	    return new WebMvcConfigurer() {
+	        @Override
+			public
+	        void addCorsMappings(CorsRegistry registry) {
+	            registry.addMapping("/**")
+	                    .allowedOrigins("*");
+	        }
+	    };
 	}
 
 }
