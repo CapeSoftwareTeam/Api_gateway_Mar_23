@@ -13,10 +13,24 @@ spring:
               allowedHeaders: "*"
       routes:
         ## service1
-        - id: lv
-          uri: lb://lv
+        - id: lvservice
+          uri: lb://lvservice
           predicates:
-            - Path=/lv/**
+            - Path=/lvservice/**
+          filters:
+            - StripPrefix=1
+        ## service2
+        - id: RegisterService
+          uri: lb://RegisterService
+          predicates:
+            - Path=/RegisterService/**
+          filters:
+            - StripPrefix=1
+        ## service3
+        - id: lps
+          uri: lb://lps
+          predicates:
+            - Path=/lps/**
           filters:
             - StripPrefix=1
        
