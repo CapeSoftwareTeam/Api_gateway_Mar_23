@@ -1,6 +1,6 @@
-spring:
+spring: 
   application:
-    name: API-GATEWAY
+    name: apigateway
   cloud:
     gateway:
       default-filters:
@@ -13,35 +13,38 @@ spring:
               allowedHeaders: "*"
       routes:
         ## service1
-        - id: lvservice
-          uri: lb://lvservice
-          predicates:
-            - Path=/lvservice/**
-          filters:
-            - StripPrefix=1
+#        - id: lvservice
+#          uri: lb://lvservice
+#          predicates:
+#            - Path=/lvservice/**
+#          filters:
+#            - StripPrefix=1
         ## service2
-        - id: RegisterService
-          uri: lb://RegisterService
+        - id: registerservice
+          uri: lb://registerservice
           predicates:
-            - Path=/RegisterService/**
+            - Path=/registerservice/**
           filters:
             - StripPrefix=1
         ## service3
-        - id: lps
-          uri: lb://lps
-          predicates:
-            - Path=/lps/**
-          filters:
-            - StripPrefix=1
+#        - id: lpsservice
+#          uri: lb://lpsservice
+#          predicates:
+#            - Path=/lpsservice/**
+#          filters:
+#            - StripPrefix=1
+  main:    allow-bean-definition-overriding: true
+    web-application-type: reactive    
        
 server:
-  port: 8080
+  port: 8088
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://Netflixeurekanamingserver-env.eba-wzmkebma.ap-south-1.elasticbeanstalk.com/eureka
 
+  
       
 
 
