@@ -9,8 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.capeelectric</groupId>
-	<artifactId>api-gateway</artifactId>
-	<name>api-gateway</name>
+	<artifactId>api-gateway_new</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>api-gateway_new</name>
 	<description>api-gatway Spring Boot project</description>
 	<packaging>jar</packaging>
 	<properties>
@@ -71,7 +72,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>api-gateway</finalName>
+		<finalName>api-gateway_new</finalName>
 	</build>
 
 </project>

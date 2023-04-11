@@ -19,4 +19,9 @@ public class HealthController {
 		}
 	}
 
+	@GetMapping(value = "/getservice")
+	public ResponseEntity<?> getValue() {
+		return new ResponseEntity<String>("Api-gateway service", HttpStatus.OK);
 	}
+
+}
