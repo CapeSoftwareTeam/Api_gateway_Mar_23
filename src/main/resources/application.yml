@@ -1,6 +1,6 @@
 spring: 
   application:
-    name: apigateway
+    name: apigateway_server
   cloud:
     gateway:
       default-filters:
@@ -12,27 +12,20 @@ spring:
               allowedMethods: "*"
               allowedHeaders: "*"
       routes:
-        ## service1
+#        # service1
 #        - id: lvservice
 #          uri: lb://lvservice
 #          predicates:
 #            - Path=/lvservice/**
 #          filters:
 #            - StripPrefix=1
-        ## service2
-        - id: registerservice
-          uri: lb://registerservice
+        # service2apigateway_server
+        - id: register-service
+          uri: lb://register-service
           predicates:
-            - Path=/registerservice/**
+            - Path=/register-service/**
           filters:
             - StripPrefix=1
-        ## service3
-#        - id: lpsservice
-#          uri: lb://lpsservice
-#          predicates:
-#            - Path=/lpsservice/**
-#          filters:
-#            - StripPrefix=1
   main:    allow-bean-definition-overriding: true
     web-application-type: reactive    
        
@@ -42,8 +35,12 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://Netflixeurekanamingserver-env.eba-wzmkebma.ap-south-1.elasticbeanstalk.com/eureka
-
+      defaultZone: http://eureka-naming-server.capeelectric.internal:8761
+#  instance:
+#    preferIpAddress: true
+#    instance:
+#      ip-address: true
+     
   
       
 
